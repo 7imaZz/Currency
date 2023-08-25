@@ -16,6 +16,11 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+        val accessKey: String = com.android.build.gradle.internal.cxx.configure.gradleLocalProperties(
+            rootDir
+        ).getProperty("ACCESS_KEY") ?: ""
+        buildConfigField("String", "ACCESS_KEY", "\"$accessKey\"")
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -38,6 +43,7 @@ android {
     buildFeatures{
         viewBinding = true
     }
+    android.buildFeatures.buildConfig = true
 }
 
 dependencies {
@@ -81,6 +87,8 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.6.1")
 
     testImplementation("junit:junit:4.13.2")
+    testImplementation("com.google.truth:truth:1.0.1")
+    androidTestImplementation("com.google.truth:truth:1.0.1")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }

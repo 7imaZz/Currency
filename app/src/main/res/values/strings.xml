@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Currency</string>
+    <string name="swap">Swap</string>
+    <string name="details">Details</string>
 </resources>
