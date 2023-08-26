@@ -1,6 +1,5 @@
 package com.shorbgy.currency.featuremain.presentation.details
 
-import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -47,7 +46,6 @@ constructor(
 
     init {
         symbols.addAll(POPULAR_CURRENCIES)
-        Log.d("7imaZzz", "Symbols: $symbols")
         getHistoricalRates()
     }
 
@@ -64,7 +62,9 @@ constructor(
     }
 
     fun convertToRightCurrencyValue(rates: HashMap<String, Double>, toSymbol: String = toCurrency.symbol): Double{
-        return (1/rates[fromCurrency.symbol]!!*rates[toSymbol]!!)
+        if (rates.containsKey(fromCurrency.symbol) && rates.containsKey(toSymbol))
+            return (1/rates[fromCurrency.symbol]!!*rates[toSymbol]!!)
+        throw Exception("Can't Find Currency In Rates Map")
     }
 
     fun computeChange(rates: HashMap<String, Double>): Double{

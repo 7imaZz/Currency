@@ -8,7 +8,8 @@ class FakeMainRepo : MainRepo {
 
     private var shouldReturnNetworkError = false
     private var shouldReturnLoadingState = false
-    val rateResponse = RatesResponse("EUR", "2023-08-25", hashMapOf(), true, 1, null)
+    private val rates = hashMapOf("EUR" to 1.0, "USD" to 2.0)
+    val rateResponse = RatesResponse("EUR", "2023-08-25", rates, true, 1, null)
     fun setShouldReturnNetworkError(value: Boolean) {
         shouldReturnNetworkError = value
     }
@@ -29,6 +30,10 @@ class FakeMainRepo : MainRepo {
         date: String,
         symbols: List<String>
     ): Resource<RatesResponse> {
-        return Resource.Loading()
+        if (shouldReturnLoadingState)
+            return Resource.Loading()
+        if (shouldReturnNetworkError)
+            return Resource.Error(message = "Error")
+        return Resource.Success(rateResponse)
     }
 }
