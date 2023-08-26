@@ -7,12 +7,14 @@ import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.shorbgy.currency.R
+import com.shorbgy.currency.core.Constants
 import com.shorbgy.currency.core.Resource
 import com.shorbgy.currency.databinding.FragmentHomeBinding
 import com.shorbgy.currency.featuremain.domain.model.Currency
@@ -92,7 +94,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                         currencies.clear()
                         ratesMap.keys.forEachIndexed { index, s ->
                             currencies.add(Currency(s, index, ratesMap[s]!!))
-                            if (s==it.data.base) viewModel.setBaseCurrency(currencies[index])
+                            if (s==it.data.base) viewModel.setSelectedFromCurrency(currencies[index])
                         }
 
                         Log.d("7imaZz", "observeData: $currencies")
@@ -101,7 +103,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                         toList = ratesMap.keys.toMutableList()
 
                         if (currencies.isNotEmpty()){
-                            viewModel.setSelectedFromCurrency(viewModel.getBaseCurrency())
                             viewModel.setSelectedToCurrency(currencies[0])
                             viewModel.convertCurrency()
                             binding.fromSp.setSelection(viewModel.getSelectedFromCurrency().position)
@@ -139,6 +140,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 fromSp.setSelection(viewModel.getSelectedToCurrency().position)
                 toSp.setSelection(viewModel.getSelectedFromCurrency().position)
                 viewModel.convertCurrency(fromEt.text.toString().ifEmpty { "1.0" })
+            }
+
+            detailsBtn.setOnClickListener {
+                parent.navController.navigate(R.id.action_homeFragment_to_detailsFragment,
+                    bundleOf(
+                        Constants.FROM_CURRENCY to viewModel.getSelectedFromCurrency(),
+                        Constants.TO_CURRENCY to viewModel.getSelectedToCurrency()
+                    )
+                )
             }
         }
     }

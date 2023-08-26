@@ -30,7 +30,6 @@ constructor(
 
     private lateinit var selectedFromCurrency: Currency
     private lateinit var selectedToCurrency: Currency
-    private lateinit var baseCurrency: Currency
 
     init {
         getLatestRates()
@@ -46,11 +45,6 @@ constructor(
     fun setSelectedToCurrency(currency: Currency){
         selectedToCurrency = currency
     }
-    fun setBaseCurrency(currency: Currency){
-        baseCurrency = currency
-    }
-
-    fun getBaseCurrency() = baseCurrency
     fun getSelectedFromCurrency() = selectedFromCurrency
     fun getSelectedToCurrency() = selectedToCurrency
 
@@ -68,8 +62,7 @@ constructor(
     }
 
     private fun convertToBaseCurrencyEquivalent(value: Double): Double{
-        if (baseCurrency.value == 0.0)
-            return 0.0
-        return baseCurrency.value/value
+        if (value == 0.0) return 0.0
+        return 1/value
     }
 }

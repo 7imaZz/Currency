@@ -2,4 +2,9 @@
     <string name="app_name">Currency</string>
     <string name="swap">Swap</string>
     <string name="details">Details</string>
+    <string name="date">Date</string>
+    <string name="price">Price</string>
+    <string name="change">Change %</string>
+    <string name="other_currencies">Other Currencies</string>
+    <string name="currency">Currency</string>
 </resources>

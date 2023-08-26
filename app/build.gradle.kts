@@ -16,6 +16,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+        // Initialize Access Key Existing in local.properties so we can access it by writing (BuildConfig.ACCESS_KEY)
         val accessKey: String = com.android.build.gradle.internal.cxx.configure.gradleLocalProperties(
             rootDir
         ).getProperty("ACCESS_KEY") ?: ""

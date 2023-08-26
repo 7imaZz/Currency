@@ -62,7 +62,6 @@ class HomeViewModelTest {
     @Test
     fun convertCurrencySuccessState_isSetCorrectly() = runTest {
         viewModel = HomeViewModel(getLatestRatesUseCase)
-        viewModel.setBaseCurrency(Currency("EUR", 0, 1.0))
         viewModel.setSelectedFromCurrency(Currency("USD", 2, 1.079443))
         viewModel.setSelectedToCurrency(Currency("EGP", 1, 33.394582))
         viewModel.convertCurrency("1.0")

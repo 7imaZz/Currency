@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nested_scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".featuremain.presentation.details.DetailsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+
+        <TextView
+            android:id="@+id/from_to_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="USD - EGP" />
+
+        <TextView
+            android:id="@+id/date_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/date"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/price_tv"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/from_to_tv" />
+
+        <TextView
+            android:id="@+id/price_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:text="@string/price"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/change_tv"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/date_tv"
+            app:layout_constraintTop_toTopOf="@id/date_tv" />
+
+        <TextView
+            android:id="@+id/change_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/change"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/price_tv"
+            app:layout_constraintTop_toTopOf="@id/date_tv" />
+
+        <View
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="8dp"
+            android:background="#EEE"
+            app:layout_constraintTop_toBottomOf="@id/date_tv" />
+
+        <include
+            android:id="@+id/historical1_layout"
+            layout="@layout/item_historical_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/line1" />
+
+        <View
+            android:id="@+id/line2"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#EEE"
+            app:layout_constraintTop_toBottomOf="@id/historical1_layout" />
+
+        <include
+            android:id="@+id/historical2_layout"
+            layout="@layout/item_historical_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/line2" />
+
+        <View
+            android:id="@+id/line3"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#EEE"
+            app:layout_constraintTop_toBottomOf="@id/historical2_layout" />
+
+        <include
+            android:id="@+id/historical3_layout"
+            layout="@layout/item_historical_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/line3" />
+
+        <ProgressBar
+            android:id="@+id/progress1"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintBottom_toBottomOf="@id/historical1_layout"
+            app:layout_constraintEnd_toEndOf="@id/historical1_layout"
+            app:layout_constraintStart_toStartOf="@id/historical1_layout"
+            app:layout_constraintTop_toTopOf="@id/historical1_layout" />
+
+        <ProgressBar
+            android:id="@+id/progress2"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintBottom_toBottomOf="@id/historical2_layout"
+            app:layout_constraintEnd_toEndOf="@id/historical2_layout"
+            app:layout_constraintStart_toStartOf="@id/historical2_layout"
+            app:layout_constraintTop_toTopOf="@id/historical2_layout" />
+
+        <ProgressBar
+            android:id="@+id/progress3"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintBottom_toBottomOf="@id/historical3_layout"
+            app:layout_constraintEnd_toEndOf="@id/historical3_layout"
+            app:layout_constraintStart_toStartOf="@id/historical3_layout"
+            app:layout_constraintTop_toTopOf="@id/historical3_layout" />
+
+        <TextView
+            android:id="@+id/other_currencies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/other_currencies"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/historical3_layout" />
+
+        <TextView
+            android:id="@+id/other_date1_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/other_currencies"
+            tools:text="25-02-2023" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/other_currencies1_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/other_date1_tv"
+            tools:itemCount="4"
+            tools:listitem="@layout/item_other_historical_row" />
+
+        <TextView
+            android:id="@+id/other_date2_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/other_currencies1_rv"
+            tools:text="25-02-2023" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/other_currencies2_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/other_date2_tv"
+            tools:itemCount="4"
+            tools:listitem="@layout/item_other_historical_row" />
+
+        <TextView
+            android:id="@+id/other_date3_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/other_currencies2_rv"
+            tools:text="25-02-2023" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/other_currencies3_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/other_date3_tv"
+            tools:itemCount="4"
+            tools:listitem="@layout/item_other_historical_row" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.core.widget.NestedScrollView>

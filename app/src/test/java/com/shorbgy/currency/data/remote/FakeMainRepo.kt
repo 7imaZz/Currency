@@ -24,4 +24,11 @@ class FakeMainRepo : MainRepo {
             return Resource.Error(message = "Error")
         return Resource.Success(rateResponse)
     }
+
+    override suspend fun getHistoricalRates(
+        date: String,
+        symbols: List<String>
+    ): Resource<RatesResponse> {
+        return Resource.Loading()
+    }
 }
